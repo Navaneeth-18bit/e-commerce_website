@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream-50 text-ink-900 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-ink-900 text-cream-50;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ink-900 ring-offset-2 ring-offset-cream-50;
+  }
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply ring-1 ring-ink-900 ring-offset-0;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-8xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 text-sm font-medium uppercase tracking-wider transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-ink-900 text-cream-50 px-6 py-3.5 hover:bg-ink-800 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-transparent text-ink-900 border border-ink-200 px-6 py-3.5 hover:border-ink-900 active:scale-[0.98];
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-cream-50 px-6 py-3.5 hover:bg-accent-600 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn text-ink-700 hover:text-ink-900 px-3 py-2;
+  }
+  .label-xs {
+    @apply text-2xs font-medium uppercase tracking-widest text-ink-400;
+  }
+  .heading-display {
+    @apply font-display font-medium leading-[1.1] tracking-tight;
+  }
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply bg-ink-100;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    background-size: 1000px 100%;
+    @apply animate-shimmer;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 9999px;
+  border: 2px solid #faf9f7;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
